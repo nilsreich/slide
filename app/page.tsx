@@ -336,11 +336,11 @@ print(mein_dict['b'])  # Zugriff auf den Wert mit Schlüssel 'b'
                 }`}
                 variant={"ghost"}
                 size={"sm"}
-                onClick={() => setScaleLevel((prev) => prev - 0.1)}
+                onClick={() => setScaleLevel((prev) => Number(prev) - 0.1)}
               >
                 <ZoomOutIcon size={16} />
               </Button>
-              <div>{Math.round(scaleLevel.toFixed(1) * 100)}%</div>
+              <div>{Math.round(Number(scaleLevel.toFixed(1)) * 100)}%</div>
               <Button
                 className={`${
                   isDarkMode
@@ -349,7 +349,7 @@ print(mein_dict['b'])  # Zugriff auf den Wert mit Schlüssel 'b'
                 }`}
                 variant={"ghost"}
                 size={"sm"}
-                onClick={() => setScaleLevel((prev) => prev + 0.1)}
+                onClick={() => setScaleLevel((prev) => Number(prev) + 0.1)}
               >
                 <ZoomInIcon size={16} />
               </Button>
