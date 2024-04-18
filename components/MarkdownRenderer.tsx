@@ -2,7 +2,6 @@ import { unified } from "unified";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import rehypeStringify from "rehype-stringify";
-import rehypePrettyCode from "rehype-pretty-code";
 import { useEffect, useState } from "react";
 
 export const MarkdownRenderer = ({
@@ -15,6 +14,17 @@ export const MarkdownRenderer = ({
   isDarkMode: boolean;
 }) => {
   const [renderedMarkdown, setRenderedMarkdown] = useState("");
+
+  let rehypePrettyCode: typeof import("rehype-pretty-code").default;
+
+  import("rehype-pretty-code")
+    .then((module) => {
+      rehypePrettyCode = module.default;
+      // Use rehypePrettyCode here
+    })
+    .catch((error) => {
+      console.error("Failed to load rehype-pretty-code", error);
+    });
 
   useEffect(() => {
     const processMarkdown = async () => {
